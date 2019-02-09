@@ -1,0 +1,7 @@
+<%= form_for(@event) do |f| %>
+<%= f.label :title %>
+<%= f.text_field :title %>
+<%= f.label :time %>
+<%= f.datetime_field :date, min: Time.now, max: 10.years.from_now, select: Time.now %>
+<%= f.submit %>
+<% end %>
