@@ -1,7 +1,6 @@
 class User < ApplicationRecord
     before_create :generate_token
     has_many :events
-    
     def remember_token
         SecureRandom.urlsafe_base64
     end
