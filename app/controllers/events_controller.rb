@@ -14,17 +14,25 @@ class EventsController < ApplicationController
   end
   
   def create
-    puts "--------------------------#{user_iam.id}" 
     @event = user_iam.events.build(event_params)
-    puts "--------------------------#{@event}" 
-    @event.save
+    if @event.save
+      @event.attendees.build(attendee_params).save
+      redirect_to events_path
+    else
+      render 'new'
+    end
   end
   
-  private
+  
+    private
   
   def event_params
     params.require(:event).permit(:title, :date)
   end
+  
+  def attendee_params
+    {user_id:@event.user_id,accepted:true}
+  end 
 
   def creator
     User.find(@event.user_id).email.split('@')[0].capitalize

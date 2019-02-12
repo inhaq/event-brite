@@ -1,5 +1,12 @@
+<%= link_to name,user_path(user) %>
+<div class="container m-auto w-50 p-3">
 <% @events.each do |event| %>
-<%= event.title %>
-<%= event.date %>
+<div class="card mb-2">
+<div class="card-body">
+<h4><%= event.title %></h4>
+<strong><%= event.date %></strong>
 <%= link_to 'Show',event_path(event) %>
+</div>
+</div>
 <% end %>
+</div>
