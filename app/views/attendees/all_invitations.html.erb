@@ -1,0 +1,5 @@
+<% single_invitation.each do |x| %>
+<p><%= x.title %> <%= x.date %> <%= event_creator(x.user_id) %> </p>
+<%= button_to 'accept', accept_path(x.id) %><%= button_tag 'Decline', method: :delete %>
+<% end %>
+

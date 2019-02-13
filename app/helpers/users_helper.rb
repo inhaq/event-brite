@@ -10,9 +10,10 @@ module UsersHelper
        user.email.split('@')[0].capitalize
     end 
     def pending_invitations
-        Attendee.where(accepted:false,user_id:user.id).first
+       Attendee.where(accepted:false,invitee:user.id)
     end
     def pending_event
-        Event.where(id:pending_invitations.event_id)
+        n = Event.where(id:pending_invitations.event_id)
+        @a[:event_id] = n.id 
     end
 end

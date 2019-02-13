@@ -1,7 +1,9 @@
 
 <%= name %>
 <%= link_to 'Logout',logout_path %>
-<p>You have  <%=link_to pending_invitations,event_attendees_path(pending_event[:id]) %> pending inivtiantions</p>
+<% if pending_invitations %>
+<p>You have <%= pending_invitations.count %> pending invitation </p>
+<% end %>
 <% @user.events.all.each do |event| %>
 <div class="card mb-2">
 <div class="card-body">
