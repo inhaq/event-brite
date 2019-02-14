@@ -1,7 +1,8 @@
 class EventsController < ApplicationController
 
   def index
-    @events = Event.all
+    # if he is the owner or he accepted the invitation
+    @events = Event.where(user_id: user_iam.id)
   end
 
   def new
@@ -31,7 +32,7 @@ class EventsController < ApplicationController
   end
   
   def attendee_params
-    {user_id:@event.user_id,accepted:true}
+    {user_id:@event.user_id,accepted:true, invitee: @event.user_id}
   end 
 
   def creator

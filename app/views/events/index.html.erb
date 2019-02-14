@@ -1,12 +1,34 @@
-<%= link_to name,user_path(user) %>
-<div class="container m-auto w-50 p-3">
-<% @events.each do |event| %>
-<div class="card mb-2">
-<div class="card-body">
-<h4><%= event.title %></h4>
-<strong><%= event.date %></strong>
-<%= link_to 'Show',event_path(event) %>
-</div>
-</div>
-<% end %>
+<div class="jumbotron">
+    <div class="row">
+        <div class="col">
+            <h3>Your Events</h3>
+            <h6>Upcoming</h6>
+            <% if !upcoming_events.empty? %>
+                <%= render partial: 'event', collection: upcoming_events %>
+            <% else %>
+                <%= render 'noevent' %>
+            <% end %>
+            <h6>Previous</h6>
+            <% if !prev_events.empty? %>
+            <%= render partial: 'event', collection: prev_events %>
+            <% else %>
+                <%= render 'noevent' %>
+            <% end %>
+        </div>
+        <div class="col">
+            <h3>Invited Events</h3>
+            <h6>Upcoming</h6>
+            <% if !upcoming_accepted_events.empty? %>
+            <%= render partial: 'event', collection: upcoming_accepted_events %>
+            <% else %>
+                <%= render 'noevent' %>
+            <% end %>
+            <h6>Previous</h6>
+            <% if !prev_accepted_events.empty? %>
+                <%= render partial: 'event', collection: prev_accepted_events %>
+            <% else %>
+                <%= render 'noevent' %>
+            <% end %>
+        </div>
+    </div>
 </div>

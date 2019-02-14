@@ -3,10 +3,13 @@
     <p><%= msg %></p>
     <% end %>
 <% end %>
+<div class="jumbotron text-center m-5">
+    <h3>Create Event</h3>
 <%= form_for(@event) do |f| %>
-<%= f.label :title %>
-<%= f.text_field :title %>
-<%= f.label :time %>
-<%= f.datetime_field :date, min: Time.now, max: 10.years.from_now, select: Time.now %>
-<%= f.submit %>
+
+<%= f.text_field :title, placeholder:"Title", class:"form-control m-2" %>
+
+<%= f.datetime_field :date, min: Time.now, max: 10.years.from_now, select: Time.now, class:"form-control m-2" %>
+<%= f.submit "Submit", class:"btn btn-block btn-primary m-2" %>
 <% end %>
+</div>

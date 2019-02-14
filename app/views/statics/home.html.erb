@@ -1,0 +1,80 @@
+<h4 class="mt-5 mb-4" style="color:grey">Hi <%= name %>, Good day! 
+<% if pending_invitations.count < 1 %>
+You have <%= pending_invitations.count %> invitation
+<% end %>
+<% if pending_invitations.count > 1 %>
+You have <%= pending_invitations.count %> invitations
+<% end %>
+</h4>
+<div class="row">
+    <div class="col">
+        <%= link_to new_event_path do %>
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-3 text-right">
+                    <i class="fas fa-calendar-plus" style="font-size:64px"></i>
+                </div>
+                <div class="col-9">
+                    <h3 class="d-inline">Create Event</h3>
+                <br />
+                <p class="d-inline">You can create new event from here</p>
+                </div>
+            </div>
+        </div>
+        <% end %>
+    </div>
+
+    <div class="col">
+        <%= link_to events_path do %>
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-3 text-right">
+                    <i class="fas fa-envelope" style="font-size:64px; color: indigo"></i>
+                </div>
+                <div class="col-9">
+                    <h3 class="d-inline">Events</h3>
+                <br />
+                <p class="d-inline">See all your events here</p>
+                </div>
+            </div>
+        </div>
+        <% end %>
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col">
+        <%= link_to invitations_path do %>
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-3 text-right">
+                    <i class="fas fa-calendar-alt" style="font-size:64px; color: royalblue"></i>
+                </div>
+                <div class="col-9">
+                    <h3 class="d-inline">Invitations</h3>
+                <br />
+                <p class="d-inline">Check if you're invited to events</p>
+                </div>
+            </div>
+        </div>
+        <% end %>
+    </div>
+  
+    <div class="col">
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-3 text-right">
+                    <i class="fas fa-calendar-plus" style="font-size:64px"></i>
+                </div>
+                <div class="col-9">
+                    <h3 class="d-inline">Create Event</h3>
+                <br />
+                <p class="d-inline">You can create new event from here</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

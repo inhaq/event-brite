@@ -1,3 +1,8 @@
 @import 'bootstrap';
 @import 'font-awesome';
 @import 'font_awesome5_webfont';
+
+a:hover {
+    text-decoration: none;
+    transition: 1s;
+}

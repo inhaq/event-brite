@@ -1,5 +1,13 @@
 <% single_invitation.each do |x| %>
-<p><%= x.title %> <%= x.date %> <%= event_creator(x.user_id) %> </p>
-<%= button_to 'accept', accept_path(x.id) %><%= button_tag 'Decline', method: :delete %>
+<h6 class="d-inline"><%= event_creator(x.user_id) %></h6>
+ is inviting your for
+<%= x.title %>
+on
+ <%= x.date %>
+ <div class="d-flex">
+     
+<%= button_to 'accept', accept_path(x.id), class:"btn btn-primary" %>
+<%= button_tag 'Decline',event_attendee_path(x), method: :delete %> 
+ </div><br />
 <% end %>
 

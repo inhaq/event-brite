@@ -1,0 +1,15 @@
+<div class="card mb-2">
+    <div class="card-body">
+        <h4><%= event.title.capitalize %></h4>
+            <strong><%= distance_of_time_in_words(Time.now, event.date)  %> 
+                <% if Time.now <= event.date %>
+                remaining 
+                <% end %>
+                <% if Time.now > event.date %>
+                ago
+                <% end %>
+            </strong>
+            <%= event.date %>
+            <%= link_to 'Show',event_path(event) %>
+    </div>
+</div>

@@ -18,7 +18,7 @@ class UsersController < ApplicationController
       @user.save
       cookies.permanent[:remember_token] = @user[:remember_token]
     end
-    redirect_to new_event_path
+    redirect_to home_path
   end
   
   def logout
