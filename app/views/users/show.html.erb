@@ -8,7 +8,7 @@
 <div class="card mb-2">
 <div class="card-body">
 <h4><%= event.title %></h4>
-<strong><%= event.date %></strong>
+<strong><%= event.date.strftime('%I:%M %p %B %C, %Y') %></strong>
 </div>
 </div>
 <% end %>

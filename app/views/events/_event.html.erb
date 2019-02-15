@@ -1,7 +1,7 @@
 <div class="card mb-2">
     <div class="card-body">
         <h4><%= event.title.capitalize %></h4>
-            <strong><%= distance_of_time_in_words(Time.now, event.date)  %> 
+            <strong><%= distance_of_time_in_words(Time.now, event.date.strftime('%I:%M %p %B %C, %Y'))  %> 
                 <% if Time.now <= event.date %>
                 remaining 
                 <% end %>
@@ -9,7 +9,7 @@
                 ago
                 <% end %>
             </strong>
-            <%= event.date.localtime %>
+            <%= event.date.localtime.strftime('%I:%M %p %B %C, %Y') %>
             <% if is_creator(event) %>
             <%= link_to 'Show',event_path(event) %>
             <% end %>

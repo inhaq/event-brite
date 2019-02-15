@@ -1,2 +1,15 @@
-<h1>Welcome</h1>
-
+<div class="jumbotron text-center">
+    <h1>Welcome to EventBrite</h1>
+    <h4>
+            <li style="line-height: 40px">Login with Email</li>
+            <li style="line-height: 40px">Create Events</li>
+            <li style="line-height: 40px">Invite Friends to your Events</li>
+            <li style="line-height: 40px">Respond to Invitations</li>
+    </h4>
+    <% if logged_in? %>
+    <%= link_to 'Logout', logout_path, class:"btn btn-block btn-outline-warning" %>
+  <% else %>
+    <%= link_to 'Sign in', login_path, class:"btn btn-block btn-primary" %>
+  <% end %>
+    
+</div>

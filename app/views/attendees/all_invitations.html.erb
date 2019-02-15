@@ -1,3 +1,4 @@
+<% if !single_invitation.empty? %>
 <% single_invitation.each do |x| %>
 <div class="card w-75 m-auto">
 <div class="card-body">
@@ -5,7 +6,7 @@
  is inviting your for
 <strong><%= x.title %></strong>
 on
- <strong><%= x.date.localtime %></strong>
+ <strong><%= x.date.localtime.strftime('%I:%M %p %B %C, %Y') %></strong>
  <div class="d-flex float-right">
      
 <%= button_to accept_path(x.id), class:"btn btn-primary mr-1" do %>
@@ -17,5 +18,10 @@ on
  </div>
  </div>
  </div><br />
+<% end %>
+<% else %>
+<div class="jumbotron">
+        <h5>No invitation yet, sit tight!</h5>
+</div>
 <% end %>
 
