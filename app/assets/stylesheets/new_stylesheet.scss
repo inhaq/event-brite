@@ -2,14 +2,20 @@
 @import 'font-awesome';
 @import 'font_awesome5_webfont';
 
-a:hover {
-    text-decoration: none;
-    transition: 1s;
-    color: #500c57 !important;
+.jumbotron {
+    background-color: #b292d5 !important;
+    color: white !important;
 }
 
 a {
     color: #ffffff !important;
+}
+
+a:hover,
+a:hover > .jumbotron {
+    text-decoration: none;
+    transition: 1s;
+    color: #500c57 !important;
 }
 
 a:active,
@@ -24,10 +30,6 @@ body {
     background-size: cover;
 }
 
-.jumbotron {
-    background-color: #b292d5 !important;
-    color: white !important;
-}
 
 .card ,.card-body {
     color: #434141f2 !important;

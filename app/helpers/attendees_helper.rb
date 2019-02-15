@@ -12,7 +12,7 @@ module AttendeesHelper
     end
     
     def is_creator(a)
-      user_iam.id == a.id 
+      user_iam.id == a.user_id 
     end
     
     def accepted
