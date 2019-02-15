@@ -9,7 +9,9 @@
                 ago
                 <% end %>
             </strong>
-            <%= event.date %>
+            <%= event.date.localtime %>
+            <% if is_creator(event) %>
             <%= link_to 'Show',event_path(event) %>
+            <% end %>
     </div>
 </div>

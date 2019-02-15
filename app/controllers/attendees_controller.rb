@@ -1,5 +1,6 @@
 class AttendeesController < ApplicationController
-    
+    before_action :back_off
+    before_action :already ,only: [:create]
     def index
         @event_owner = Event.find(params[:id])
         @hello = @event_owner.attendees.where(invitee: user_iam.id)
@@ -9,13 +10,18 @@ class AttendeesController < ApplicationController
     end
     
     def accept
-      a = Attendee.where(invitee:user_iam.id,event_id:params[:format])
-      a[0].update_attributes(accepted: true)
+      a = Attendee.find_by(invitee:user_iam.id,event_id:params[:format])
+      a.update_attributes(accepted: true )
+      flash[:success] = 'Good decision'
+      redirect_to invitations_path
     end
     
     def destroy
-      a = Attendee.where(invitee:user_iam.id,event_id:params[:format])
-      a[0].destroy
+     a = Event.find(params[:event_id])
+     c = a.attendees.find_by(invitee:user_iam.id)
+     c.destroy
+     flash[:danger] = "You'll be sorry"
+     redirect_to invitations_path
     end
     
     def create
@@ -29,5 +35,16 @@ class AttendeesController < ApplicationController
           flash[:danger] = 'Typo? Wrong email? Or Mad?'
           redirect_to event_path(@current_event)
         end
+    end 
+    private
+    
+    def already
+      n = Event.find(params[:event_id])
+      u = User.find_by_email(params[:attendee][:email])
+      l = n.attendees.find_by(invitee:u.id)
+      if l 
+        flash[:danger] = 'User has been invited already'
+        redirect_to event_path(n)
+      end
     end 
 end

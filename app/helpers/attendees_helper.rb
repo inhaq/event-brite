@@ -11,6 +11,10 @@ module AttendeesHelper
       User.find(a).email.split('@')[0].capitalize
     end
     
+    def is_creator(a)
+      user_iam.id == a.id 
+    end
+    
     def accepted
       @event = Event.find(params[:id])
       accepted = Attendee.where(event_id: @event.id, accepted: true)

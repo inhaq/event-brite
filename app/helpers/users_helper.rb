@@ -9,11 +9,15 @@ module UsersHelper
     def name
        user.email.split('@')[0].capitalize
     end 
-    def pending_invitations
-       Attendee.where(accepted:false,invitee:user.id)
+    def pending_invitations_u
+       Attendee.where(accepted:false,invitee:user.id).nil? ? 0 : Attendee.where(accepted:false,invitee:user.id)
     end
     # def pending_event
     #     n = Event.where(id:pending_invitations.event_id)
     #     @a[:event_id] = n.id 
     # end
 end
+## badge
+## logout 4th card
+## safe routes 
+## some refractor
