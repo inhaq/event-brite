@@ -2,10 +2,11 @@ module EventsHelper
     def upcoming_accepted_events
         @upcoming_accepted = []
         accept = Attendee.where(invitee: user_iam.id, accepted: true)
+        event_ids = []
         accept.each do |a| 
-            @upcoming_accepted = Event.where(id: a.event_id).where("date > ?", Time.now)
+            event_ids << a.event_id
         end
-        @upcoming_accepted
+        @upcoming_accepted = Event.where(id: event_ids, date: Time.now..DateTime::Infinity.new).order(:date)
     end
     
     def prev_accepted_events

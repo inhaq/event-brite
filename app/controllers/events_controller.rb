@@ -2,8 +2,7 @@ class EventsController < ApplicationController
   before_action :back_off
   before_action :only_creator,only: [:show]
   def index
-    # if he is the owner or he accepted the invitation
-    @events = Event.where(user_id: user_iam.id)
+    @events = Event.where(user_id: user_iam.id).order(:date)
   end
 
   def new
