@@ -12,11 +12,12 @@ module EventsHelper
     def prev_accepted_events
         @prev_accepted = []
         accept = Attendee.where(invitee: user_iam.id, accepted: true)
+        event_ids = []
         accept.each do |a| 
-            @prev_accepted = Event.where(id: a.event_id).where("date < ?", Time.now)
+            event_ids << a.event_id
         end
-        puts @prev_accepted
-        @prev_accepted
+        
+        @prev_accepted = Event.where(id: event_ids, date: Time.new(10, 1, 1, 0, 0, 0)..Time.now).order(:date)
     end
     
     def prev_events
