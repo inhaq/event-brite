@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :back_off, except: [:new,:create]
   before_action :only_you, only: [:show]
+  before_action :if_logged_in, only: [:new]
   def new
     @user = User.new
   end
@@ -12,13 +13,13 @@ class UsersController < ApplicationController
   
   def create
     if check_user_in_db
-      if cookies[:remember_token].nil?
-        cookies.permanent[:remember_token] = @user_exists[:remember_token]
+      if cookies[:remember_token] != @user_exists[:remember_token]
+        login @user_exists
       end
     else
       @user = User.new(user_params)
       @user.save
-      cookies.permanent[:remember_token] = @user[:remember_token]
+      login @user
     end
     redirect_to home_path
   end
@@ -31,25 +32,7 @@ class UsersController < ApplicationController
  
   
   private
-  
-  def check_user_in_db
-    @user_exists = User.find_by_email(params[:user][:email])
-  end
-  
   def user_params
     params.require(:user).permit(:email)
-  end
-
-  def get_uname
-    @user = User.find(params[:id])
-    name = @user.email.split('@')[0].capitalize
-  end
-
-  def only_you
-      a = User.find(params[:id])
-    unless  a.id == user_iam.id
-      flash[:danger] = 'Sorry not yours'
-      redirect_to user_path(user_iam)
-    end
   end
 end

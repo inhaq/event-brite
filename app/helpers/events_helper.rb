@@ -21,22 +21,10 @@ module EventsHelper
     end
     
     def prev_events
-        @prev = []
-        @events.each do |e|
-            if e.date < Time.now
-                @prev << e
-            end
-        end
-        @prev
+        @prev = @events.past(Time.now)
     end
     
     def upcoming_events
-        @upcoming = []
-        @events.each do |e|
-            if e.date >= Time.now
-                @upcoming << e
-            end
-        end
-        @upcoming
+        @upcoming = @events.upcoming(Time.now)
     end
 end

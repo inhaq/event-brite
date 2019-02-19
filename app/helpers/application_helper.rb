@@ -4,9 +4,14 @@ module ApplicationHelper
     end
 
     def back_off
-        if !logged_in?
+        if !user_iam
             flash[:danger] = 'Sign In First'
-            redirect_to root_path
+            redirect_to login_path
+        end
+    end
+    def if_logged_in
+        if user_iam
+            redirect_to home_path
         end
     end
 end

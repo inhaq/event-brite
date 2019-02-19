@@ -30,17 +30,17 @@ class AttendeesController < ApplicationController
         if invited_user
           @current_event.attendees.build(invitee: invited_user.id, user_id: user_iam.id).save
           flash[:success] = 'Well done! Now wait for accepting this invitation 😀'
-          redirect_to event_path(@current_event)
-        else
+         return redirect_to event_path(@current_event)
+        end
           flash[:danger] = 'Typo? Wrong email? Or Mad?'
           redirect_to event_path(@current_event)
-        end
     end 
     private
     
     def already
       n = Event.find(params[:event_id])
       u = User.find_by_email(params[:attendee][:email])
+      return true if u.nil?
       l = n.attendees.find_by(invitee:u.id)
       if l 
         flash[:danger] = 'User has been invited already'
