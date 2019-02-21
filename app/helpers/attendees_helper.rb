@@ -16,8 +16,8 @@ module AttendeesHelper
     end
     
     def accepted
-      @event = Event.find(params[:id])
-      accepted = Attendee.where(event_id: @event.id, accepted: true)
+      event = Event.find(params[:id])
+      accepted = Attendee.where(event_id: event.id, accepted: true)
       acp_arr = []
       accepted.each do |acp|
         acp_arr << User.find(acp.invitee)
@@ -26,7 +26,8 @@ module AttendeesHelper
     end
     
     def pending_invitation
-      pending = Attendee.where(event_id: @event.id, accepted: false)
+      event = Event.find(params[:id])
+      pending = Attendee.where(event_id: event.id, accepted: false)
       acp_arr = []
       pending.each do |acp|
         acp_arr << User.find(acp.invitee)
