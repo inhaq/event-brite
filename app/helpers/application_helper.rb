@@ -14,4 +14,10 @@ module ApplicationHelper
             redirect_to home_path
         end
     end
+    def from_login
+        prev = Rails.application.routes.recognize_path(request.referrer)
+        unless prev[:controller] == "sessions"
+            redirect_to login_path
+        end
+    end
 end

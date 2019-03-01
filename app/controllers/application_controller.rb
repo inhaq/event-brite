@@ -3,7 +3,8 @@ class ApplicationController < ActionController::Base
     include UsersHelper
     include AttendeesHelper
     include EventsHelper
-    before_action :back_off ,except: [:home,:login,:show]
+    include SessionsHelper
+    #before_action :back_off ,except: [:home,:login,:show]
     before_action :set_cache_buster
 
     protected
