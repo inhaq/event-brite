@@ -1,10 +1,6 @@
 class AttendeesController < ApplicationController
     before_action :back_off
     before_action :already ,only: [:create]
-    def index
-        @event_owner = Event.find(params[:id])
-        @hello = @event_owner.attendees.where(invitee: user_iam.id)
-    end
     def all_invitations
       @invitations = Attendee.where(invitee: user_iam.id,accepted:false)
     end

@@ -1,10 +1,6 @@
 module AttendeesHelper
     def single_invitation
-      @a = []
-      @invitations.each do |i|
-        @a << Event.find(i.event_id)
-      end
-      @a
+        Event.singleEvent(@invitations)
     end
       
     def event_creator(a)
@@ -16,22 +12,12 @@ module AttendeesHelper
     end
     
     def accepted
-      event = Event.find(params[:id])
-      accepted = Attendee.where(event_id: event.id, accepted: true)
-      acp_arr = []
-      accepted.each do |acp|
-        acp_arr << User.find(acp.invitee)
-      end
-      acp_arr
+      accepted = Attendee.accepted_or_pending_event(params[:id],true)
+      User.listUser(accepted)
     end
     
     def pending_invitation
-      event = Event.find(params[:id])
-      pending = Attendee.where(event_id: event.id, accepted: false)
-      acp_arr = []
-      pending.each do |acp|
-        acp_arr << User.find(acp.invitee)
-      end
-      acp_arr
+      accepted = Attendee.accepted_or_pending_event(params[:id],false)
+      User.listUser(accepted)
     end
 end

@@ -9,6 +9,10 @@ class User < ApplicationRecord
     def encrypt_token
         Digest::SHA1.hexdigest(remember_token.to_s)
     end
+
+    def self.listUser(list)
+        User.where(id: list.collect(&:invitee))
+    end
     
     private
     def generate_token
