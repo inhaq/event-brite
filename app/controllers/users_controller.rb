@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :if_logged_in, only: [:new]
+  before_action :logged_in?, only: [:new]
   before_action :from_login, only: [:new]
   before_action :only_you, only: [:show]
   
