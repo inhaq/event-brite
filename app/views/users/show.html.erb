@@ -1,0 +1,14 @@
+
+<%= name %>
+<%= link_to 'Logout',logout_path %>
+<% if pending_invitations_u %>
+<p>You have <%= pending_invitations_u.count %> pending invitation </p>
+<% end %>
+<% @user.events.all.each do |event| %>
+<div class="card mb-2">
+<div class="card-body">
+<h4><%= event.title %></h4>
+<strong><%= event.date.strftime('%I:%M %p %B %C, %Y') %></strong>
+</div>
+</div>
+<% end %>

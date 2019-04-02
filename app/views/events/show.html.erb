@@ -1,0 +1,18 @@
+<div class="jumbotron text-center mt-5">
+    <h4 class="mb-4">Invite your friend to join your event</h4>
+    <%= render 'attendees/form' %>
+</div>
+<div class="row mx-2">
+    <div class="col jumbotron mr-1">
+        <h5>Invitation accepted</h5>
+        <%= render partial: 'accepted', collection: accepted %>
+    </div>
+    <div class="col jumbotron ml-1">
+        <h5>Invitation pending</h5>
+        <% if !pending_invitation.empty? %>
+        <%= render partial: 'accepted', collection: pending_invitation %>
+        <% else %>
+        <%= render 'noaccept' %>
+        <% end %>
+    </div>
+</div>

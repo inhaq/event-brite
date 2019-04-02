@@ -1,5 +1,7 @@
-<%= form_for(@user) do |f| %>
-<%= f.label :email %>
-<%= f.text_field :email %>
-<%= f.submit %>
+
+<div class="w-50 p-5 mt-5 mx-auto jumbotron form-group">
+<%= form_for @user do |f| %>
+<%= f.email_field :email,placeholder:"Enter email" , class: "form-control" %>
+<%= f.submit 'Sign Up', class: "btn btn-block btn-primary mt-2"  %>
 <% end %>
+</div>

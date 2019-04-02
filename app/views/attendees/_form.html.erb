@@ -1,0 +1,6 @@
+
+<%= form_with(model: [ @event, @event.attendees.build], local: true) do |form| %>
+
+<%= form.email_field :email, placeholder:"Email", class:"form-control mb-2" %>
+<%= form.submit "Send Invitation", class:"btn btn-block btn-primary" %>
+<% end %>

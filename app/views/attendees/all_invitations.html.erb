@@ -1,0 +1,27 @@
+<% if !single_invitation.empty? %>
+<% single_invitation.each do |x| %>
+<div class="card w-75 m-auto">
+<div class="card-body">
+<h6 class="d-inline"><strong><%= event_creator(x.user_id) %></strong></h6>
+ is inviting you for
+<strong><%= x.title %></strong>
+on
+ <strong><%= x.date.localtime.strftime('%B %C, %Y %I:%M %p') %></strong>
+ <div class="d-flex float-right">
+     
+<%= button_to accept_path(x.id), class:"btn btn-primary mr-1" do %>
+<i class="fas fa-check"></i> Accept  
+<% end %>
+<%= button_to event_attendee_path(x.id,0), method: :delete,class:"btn btn-danger" do %>
+<i class="fas fa-times"></i> Decline
+<% end %> 
+ </div>
+ </div>
+ </div><br />
+<% end %>
+<% else %>
+<div class="jumbotron">
+        <h5>No invitation yet, sit tight!</h5>
+</div>
+<% end %>
+
