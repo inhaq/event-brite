@@ -5,8 +5,8 @@ class ApplicationController < ActionController::Base
     include EventsHelper
     include SessionsHelper
     #before_action :back_off ,except: [:home,:login,:show]
+    # skip_before_filter :verify_authenticity_token
     before_action :set_cache_buster
-
     protected
 
     def set_cache_buster

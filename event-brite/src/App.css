@@ -1,0 +1,9 @@
+.App {
+  text-align: center;
+}
+
+nav {
+  height: 20vh;
+  width: 100%;
+  background-color: #986fc8;
+}
