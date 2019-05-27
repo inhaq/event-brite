@@ -3,7 +3,8 @@ module UsersHelper
         !user_iam.nil?
     end
     def name
-       user_iam.email.split('@')[0].capitalize
+       user = user_iam.email.split('@')[0]
+      user.capitalize
     end 
     def pending_invitations_u
        Attendee.where(accepted:false,invitee:user_iam.id).nil? ? 0 : Attendee.where(accepted:false,invitee:user_iam.id)
