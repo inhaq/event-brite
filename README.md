@@ -1,4 +1,4 @@
-# Event Brite Clone
+# Event Brite
 
 > Event management app. 
 ![Event Brite](./app/assets/images/eventbrite.png)
@@ -47,7 +47,7 @@ Start the application with the following command:
 rails s
 ```
 ## Future Features
-- Implement React as frontend
+- Implement React as front-end
 - Setup Docker image
 
 ## Authors: 
