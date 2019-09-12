@@ -1,36 +1,54 @@
-## Event Brite Clone
+# Event Brite Clone
 
 > Event management app. 
-
-SignUp/Login functionality is merged as there is no password auth for users. User need to put email for SignUp/Login and for first click they'll signed up and then again they'll be logged in.
-
 ![Event Brite](./app/assets/images/eventbrite.png)
 
-Deployed version can be found at [Event brite](https://eventbriter.herokuapp.com/)
+## Summary
+<hr/>
+Full stack event managment application built in Ruby on Rails framework.
 
+Deployed version can be found at [Event brite](https://eventbriter.herokuapp.com/). Deployed version runs on [heroku](https://www.heroku.com/) platform.
 
+## Getting started
+<hr/>
 
-Features:
+Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes. 
 
--   User can create event
-    
--   User can invite other users to his/her event
-    
--   User can accept/decline invite to invited events
-    
--   User can see previous and upcoming events w-r-t time
-    
+## Prerequisites
 
-***Steps to run project in development mode*** 
+This project runs with Ruby and RVM. If you don't have those installed, follow this [guide](https://rvm.io/rvm/install).
 
-- clone project with `git clone`
-- install all gems with `bundle install`
-- create database, tables and associations with `rails db:migrate`
-- run `rails s` or `rails server` to run app on localhost.
+After installation, run `ruby -v` to make sure Ruby installed correctly.
+```
+$ ruby -v
+> 2.6.3
+```
 
+Also make sure that RVM is installed by running `rvm -v`.
 
-Feel free to fork, comment and suggest.
+```
+$ rvm -v
+> 1.29.9
+```
 
+## Installations
 
+Run &nbsp; `bundle install` to install all project gems.
 
-###### Authors: [Zlaya](https://github.com/zlayabekrija) and [inhaq](https://github.com/inhaq)
+## Database Setup
+
+Run &nbsp; `rails db:migrate` to setup database and tables.
+
+## Serve project
+
+Start the application with the following command:
+
+```
+rails s
+```
+## Future Features
+- Implement React as frontend
+- Setup Docker image
+
+## Authors: 
+- [Zlaya](https://github.com/zlayabekrija) and [Inzi](https://github.com/inhaq)
