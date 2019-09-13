@@ -5,7 +5,7 @@
 
 ## Summary
 <hr/>
-Full stack event managment application built in Ruby on Rails framework.
+Full stack event management application built in Ruby on Rails framework.
 
 Deployed version can be found at [Event brite](https://eventbriter.herokuapp.com/). Deployed version runs on [heroku](https://www.heroku.com/) platform.
 
