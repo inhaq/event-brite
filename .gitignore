@@ -32,3 +32,4 @@
 # Ignore test coverage 
 /coverage
 .idea
+*.lock
